@@ -57,7 +57,7 @@ const HeroSection = () => {
 
         {/* Right Column - Carousel without box */}
         <div className="relative animate-slide-in">
-          <div className="relative w-full max-w-lg mx-auto" style={{ aspectRatio: '1080/1350' }}>
+          <div className="relative w-full max-w-lg mx-auto" style={{ aspectRatio: '1350/1350' }}>
             {carouselImages.map((image, index) => (
               <div
                 key={index}
@@ -76,6 +76,7 @@ const HeroSection = () => {
           
           {/* Carousel Controls */}
           <button
+            title="Previous image"
             onClick={prevImage}
             className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-vaho-darkBrown p-2 rounded-full shadow-lg transition-all duration-300"
           >
@@ -83,6 +84,7 @@ const HeroSection = () => {
           </button>
           
           <button
+            title="Previous image"
             onClick={nextImage}
             className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-vaho-darkBrown p-2 rounded-full shadow-lg transition-all duration-300"
           >
@@ -93,6 +95,7 @@ const HeroSection = () => {
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
             {carouselImages.map((_, index) => (
               <button
+                title={`Go to image ${index + 1}`}
                 key={index}
                 onClick={() => setCurrentImage(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-300 ${

@@ -1,7 +1,70 @@
+import React, { useEffect, useRef, useState } from "react";
 
 const VideoSection = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [poster, setPoster] = useState<string | undefined>(undefined);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    const section = sectionRef.current;
+
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && video) {
+          // Attempt to play the video
+          video.play().catch(error => {
+            console.log("Auto-play was blocked:", error);
+            // Optionally notify the user they need to interact to play the video
+          });
+        } else if (video) {
+          video.pause(); // Pause when out of view
+        }
+      });
+    };
+
+    const observer = new window.IntersectionObserver(handleIntersection, {
+      threshold: 0.3,
+    });
+
+    if (section) {
+      observer.observe(section);
+      // Manually check if the section is in view on initial load
+      const rect = section.getBoundingClientRect();
+      const isInViewport = rect.top >= 0 && rect.top <= window.innerHeight * 0.7;
+      if (isInViewport && video) {
+        video.play().catch(error => {
+          console.log("Auto-play on initial load was blocked:", error);
+        });
+      }
+    }
+
+    // Generate poster from the first frame
+    if (video) {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      video.onloadedmetadata = () => {
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        video.currentTime = 0; // Seek to the first frame
+      };
+
+      video.onseeked = () => {
+        if (context) {
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+          setPoster(canvas.toDataURL("image/png")); // Set the poster as a data URL
+        }
+      };
+    }
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   return (
-    <section id="video-section" className="py-20 bg-vaho-beige/20">
+    <section id="video-section" className="py-20 bg-vaho-beige/20" ref={sectionRef}>
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-playfair text-vaho-darkBrown mb-4">
@@ -11,25 +74,23 @@ const VideoSection = () => {
             Descubre el ritual que despierta tus sentidos
           </p>
         </div>
-        
-        {/* Video Placeholder - 1080x1920 aspect ratio */}
         <div className="max-w-md mx-auto">
-          <div 
-            className="bg-vaho-lightBrown/30 rounded-2xl flex items-center justify-center border-2 border-dashed border-vaho-brown"
+          <div
+            className="bg-vaho-lightBrown/30 rounded-2xl flex items-center justify-center"
             style={{ aspectRatio: '1080/1920', minHeight: '400px' }}
           >
-            <div className="text-center p-8">
-              <div className="text-vaho-brown mb-4">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor" className="mx-auto">
-                  <path d="M8 5v14l11-7z"/>
-                </svg>
-              </div>
-              <p className="text-vaho-darkBrown font-inter">
-                Video placeholder
-                <br />
-                <span className="text-sm text-vaho-darkest">1080 x 1920</span>
-              </p>
-            </div>
+            <video
+              ref={videoRef}
+              className="rounded-xl w-full h-full object-cover"
+              controls
+              poster={poster}
+              style={{ maxHeight: "100%", maxWidth: "100%" }}
+              preload="auto"
+              playsInline
+            >
+              <source src="/lovable-uploads/Inicio.mp4" type="video/mp4" />
+              Tu navegador no soporta la reproducción de video.
+            </video>
           </div>
         </div>
       </div>
