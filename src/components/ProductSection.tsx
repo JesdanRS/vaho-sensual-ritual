@@ -2,19 +2,15 @@
 const ProductSection = () => {
   const features = [
     {
-      icon: '🌿',
       text: 'Hecho con esencias naturales y sin crueldad animal'
     },
     {
-      icon: '☕',
       text: 'Con café de altura, orgánico y boliviano'
     },
     {
-      icon: '🌸',
       text: 'Inspirado en mujeres que atraviesan transformaciones profundas'
     },
     {
-      icon: '💖',
       text: 'Un gesto de cuidado que reconecta cuerpo y deseo'
     }
   ];
@@ -36,7 +32,6 @@ const ProductSection = () => {
                   key={index}
                   className="flex items-start space-x-3 p-4 rounded-lg bg-vaho-beige/30 hover:bg-vaho-beige/50 transition-all duration-300"
                 >
-                  <span className="text-2xl">{feature.icon}</span>
                   <p className="text-vaho-darkest font-inter leading-relaxed">
                     {feature.text}
                   </p>

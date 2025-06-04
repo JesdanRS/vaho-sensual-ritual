@@ -10,7 +10,7 @@ const EmotionalSection = () => {
               <img
                 src="/lovable-uploads/0eacb01a-8b61-4562-9acc-674ec4b853d1.png"
                 alt="Lo que queda, es más íntimo"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transform rotate-90"
               />
             </div>
           </div>
