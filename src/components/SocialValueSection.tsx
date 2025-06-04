@@ -36,9 +36,9 @@ const SocialValueSection = () => {
             </div>
           </div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Image with correct aspect ratio */}
           <div className="relative">
-            <div className="relative h-96 md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
               <img
                 src="/lovable-uploads/004b5ab2-4ba1-4989-bbe2-22417bbadc2a.png"
                 alt="El café se acaba. El deseo, no."

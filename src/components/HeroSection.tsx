@@ -55,9 +55,9 @@ const HeroSection = () => {
           </button>
         </div>
 
-        {/* Right Column - Carousel */}
+        {/* Right Column - Carousel without box */}
         <div className="relative animate-slide-in">
-          <div className="relative h-96 md:h-[500px] lg:h-[600px] overflow-hidden rounded-2xl shadow-2xl">
+          <div className="relative w-full max-w-md mx-auto" style={{ aspectRatio: '1080/1350' }}>
             {carouselImages.map((image, index) => (
               <div
                 key={index}
@@ -68,7 +68,9 @@ const HeroSection = () => {
                 <img
                   src={image}
                   alt={`VAHO perfume ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className={`w-full h-full object-cover ${
+                    index === 2 ? 'transform rotate-90' : ''
+                  }`}
                 />
               </div>
             ))}

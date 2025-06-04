@@ -4,9 +4,9 @@ const EmotionalSection = () => {
     <section className="py-20 bg-vaho-beige/20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left Column - Image */}
+          {/* Left Column - Image with correct aspect ratio */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative h-96 md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
               <img
                 src="/lovable-uploads/0eacb01a-8b61-4562-9acc-674ec4b853d1.png"
                 alt="Lo que queda, es más íntimo"

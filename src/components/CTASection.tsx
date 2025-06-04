@@ -20,9 +20,9 @@ const CTASection = () => {
             </button>
           </div>
 
-          {/* Right Column - Image */}
+          {/* Right Column - Image with correct aspect ratio */}
           <div className="relative">
-            <div className="relative h-96 md:h-[500px] overflow-hidden rounded-2xl shadow-2xl">
+            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
               <img
                 src="/lovable-uploads/a54bbf13-a429-408d-9ce2-3de69602ded4.png"
                 alt="Ella no se enfría"
