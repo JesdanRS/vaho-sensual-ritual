@@ -1,4 +1,3 @@
-
 const ProductSection = () => {
   const features = [
     {
@@ -42,11 +41,15 @@ const ProductSection = () => {
 
           {/* Right Column - Image with correct aspect ratio */}
           <div className="relative">
-            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
+            <div 
+              className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" 
+              style={{ aspectRatio: '1080/1350' }}
+            >
               <img
                 src="/lovable-uploads/34219e70-9e3b-42b2-99f8-e58969c5cf69.png"
                 alt="VAHO - El aroma se impregna"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
+                style={{ position: 'absolute', top: "40px", left: 0 }}
               />
             </div>
           </div>

@@ -27,6 +27,7 @@ const CTASection = () => {
                 src="/lovable-uploads/a54bbf13-a429-408d-9ce2-3de69602ded4.png"
                 alt="Ella no se enfría"
                 className="w-full h-full object-cover"
+                style={{ position: 'absolute', top: "30px", left: 0 }} // Ensuring the image fills the container
               />
             </div>
           </div>

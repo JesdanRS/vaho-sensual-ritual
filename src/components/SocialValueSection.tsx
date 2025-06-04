@@ -1,4 +1,3 @@
-
 const SocialValueSection = () => {
   return (
     <section className="py-20 bg-white">
@@ -38,11 +37,15 @@ const SocialValueSection = () => {
 
           {/* Right Column - Image with correct aspect ratio */}
           <div className="relative">
-            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
+            <div 
+              className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" 
+              style={{ aspectRatio: '1080/1350' }}
+            >
               <img
                 src="/lovable-uploads/004b5ab2-4ba1-4989-bbe2-22417bbadc2a.png"
                 alt="El café se acaba. El deseo, no."
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
+                style={{ position: 'absolute', top: "30px", left: 0 }} // Ensuring the image fills the container
               />
             </div>
           </div>

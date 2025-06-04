@@ -1,4 +1,3 @@
-
 const TestimonialsSection = () => {
   const testimonials = [
     {
@@ -21,11 +20,15 @@ const TestimonialsSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - Image with correct aspect ratio */}
           <div className="relative order-2 lg:order-1">
-            <div className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" style={{ aspectRatio: '1080/1350' }}>
+            <div 
+              className="relative w-full max-w-sm mx-auto overflow-hidden rounded-2xl shadow-2xl" 
+              style={{ aspectRatio: '1080/1350' }}
+            >
               <img
                 src="/lovable-uploads/280c5c5d-1cc4-43d2-ba07-6bdd7f5aa2cc.png"
                 alt="Lo que queda después del encuentro"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover object-center"
+                style={{ position: 'absolute', top: "30px", left: 0 }} // Ensuring the image fills the container
               />
             </div>
           </div>
